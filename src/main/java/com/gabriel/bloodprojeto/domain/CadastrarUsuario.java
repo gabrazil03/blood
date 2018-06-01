@@ -2,9 +2,18 @@ package com.gabriel.bloodprojeto.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class CadastrarUsuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
 	private String email;
 	private String senha;
 	private String nome;
@@ -20,9 +29,10 @@ public class CadastrarUsuario implements Serializable {
 		
 	}
 
-	public CadastrarUsuario(String email, String senha, String nome, String cep, String cidade, String rua,
+	public CadastrarUsuario(int id, String email, String senha, String nome, String cep, String cidade, String rua,
 			String bairro, String numero, String telefone, String tipoSanguineo) {
 		super();
+		this.id = id;
 		this.email = email;
 		this.senha = senha;
 		this.nome = nome;
@@ -35,6 +45,14 @@ public class CadastrarUsuario implements Serializable {
 		this.tipoSanguineo = tipoSanguineo;
 	}
 
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	
 	public String getEmail() {
 		return email;
 	}
@@ -43,6 +61,7 @@ public class CadastrarUsuario implements Serializable {
 		this.email = email;
 	}
 
+	
 	public String getSenha() {
 		return senha;
 	}
@@ -51,6 +70,7 @@ public class CadastrarUsuario implements Serializable {
 		this.senha = senha;
 	}
 
+	
 	public String getNome() {
 		return nome;
 	}
@@ -59,6 +79,7 @@ public class CadastrarUsuario implements Serializable {
 		this.nome = nome;
 	}
 
+	
 	public String getCep() {
 		return cep;
 	}
@@ -67,6 +88,7 @@ public class CadastrarUsuario implements Serializable {
 		this.cep = cep;
 	}
 
+	
 	public String getCidade() {
 		return cidade;
 	}
@@ -75,6 +97,7 @@ public class CadastrarUsuario implements Serializable {
 		this.cidade = cidade;
 	}
 
+	
 	public String getRua() {
 		return rua;
 	}
@@ -83,6 +106,7 @@ public class CadastrarUsuario implements Serializable {
 		this.rua = rua;
 	}
 
+	
 	public String getBairro() {
 		return bairro;
 	}
@@ -91,6 +115,7 @@ public class CadastrarUsuario implements Serializable {
 		this.bairro = bairro;
 	}
 
+	
 	public String getNumero() {
 		return numero;
 	}
@@ -99,6 +124,7 @@ public class CadastrarUsuario implements Serializable {
 		this.numero = numero;
 	}
 
+	
 	public String getTelefone() {
 		return telefone;
 	}
@@ -107,6 +133,7 @@ public class CadastrarUsuario implements Serializable {
 		this.telefone = telefone;
 	}
 
+	
 	public String getTipoSanguineo() {
 		return tipoSanguineo;
 	}
@@ -119,7 +146,7 @@ public class CadastrarUsuario implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + id;
 		return result;
 	}
 
@@ -132,13 +159,13 @@ public class CadastrarUsuario implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		CadastrarUsuario other = (CadastrarUsuario) obj;
-		if (email == null) {
-			if (other.email != null)
-				return false;
-		} else if (!email.equals(other.email))
+		if (id != other.id)
 			return false;
 		return true;
 	}
+
+	
+	
 	
 	
 	
