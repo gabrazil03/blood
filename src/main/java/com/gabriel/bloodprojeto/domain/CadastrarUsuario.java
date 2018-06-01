@@ -13,7 +13,7 @@ public class CadastrarUsuario implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 	private String email;
 	private String senha;
 	private String nome;
@@ -29,7 +29,7 @@ public class CadastrarUsuario implements Serializable {
 		
 	}
 
-	public CadastrarUsuario(int id, String email, String senha, String nome, String cep, String cidade, String rua,
+	public CadastrarUsuario(Integer id, String email, String senha, String nome, String cep, String cidade, String rua,
 			String bairro, String numero, String telefone, String tipoSanguineo) {
 		super();
 		this.id = id;
@@ -48,7 +48,7 @@ public class CadastrarUsuario implements Serializable {
 	public int getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	
@@ -146,7 +146,7 @@ public class CadastrarUsuario implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + id;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
 
@@ -159,11 +159,15 @@ public class CadastrarUsuario implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		CadastrarUsuario other = (CadastrarUsuario) obj;
-		if (id != other.id)
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
 			return false;
 		return true;
 	}
 
+	
 	
 	
 	
